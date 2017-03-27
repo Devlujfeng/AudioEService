@@ -55,7 +55,7 @@ Player.prototype = {
       sound = data.howl;
     } else {
       sound = data.howl = new Howl({
-        src: ['./audio/' + data.file + '.webm', './audio/' + data.file + '.mp3'],
+        src: ['./audio/' + data.file + '.mp3'],
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         onplay: function() {
           // Display the duration.
@@ -266,23 +266,42 @@ Player.prototype = {
 };
 
 // Setup our new audio player class and pass it the playlist.
-var player = new Player([
+// var player = new Player([
+//   {
+//     title: 'Word List 1',
+//     file: 'WordList01',
+//     howl: null
+//   },
+//   {
+//     title: 'Word List 1',
+//     file: 'WordList01',
+//     howl: null
+//   },
+//   {
+//     title: 'Word List 1',
+//     file: 'WordList01',
+//     howl: null
+//   },
+//   {
+//     title: 'Word List 1',
+//     file: 'WordList01',
+//     howl: null
+//   }
+// ]);
+
+var musicList = [];
+var length = 35;
+for(i = 1; i <= length; i++){
+var music =
   {
-    title: 'Rave Digger',
-    file: 'rave_digger',
-    howl: null
-  },
-  {
-    title: '80s Vibe',
-    file: '80s_vibe',
-    howl: null
-  },
-  {
-    title: 'Running Out',
-    file: 'running_out',
+    title: 'Word List ' + i,
+    file: 'WordList' + (i < 10 ? "0"+i : i),
     howl: null
   }
-]);
+musicList.push(music);
+}
+var player = new Player(musicList);
+
 
 // Bind our player controls.
 playBtn.addEventListener('click', function() {
